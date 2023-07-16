@@ -1,0 +1,331 @@
+[
+  {
+    "scan_id": "fdf84ea6-a16f-42e4-5094-4d630b6db8cc",
+    "vulnerabilities": [
+      {
+        "cves": [
+          {
+            "cve": "CVE-2017-16137",
+            "cvss_v2_score": "5.0",
+            "cvss_v2_vector": "CVSS:2.0/AV:N/AC:L/Au:N/C:N/I:N/A:P",
+            "cvss_v3_score": "5.3",
+            "cvss_v3_vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+          }
+        ],
+        "summary": "The debug module is vulnerable to regular expression denial of service when untrusted user input is passed into the o formatter. It takes around 50k characters to block for 2 seconds making this a low severity issue.",
+        "severity": "Medium",
+        "components": {
+          "npm://debug:4.1.1": {
+            "fixed_versions": [
+              "[2.6.9]",
+              "[3.1.0]",
+              "[3.2.7]",
+              "[4.3.1]"
+            ],
+            "impact_paths": [
+              [
+                {
+                  "component_id": "npm://zen-website:1.0.0"
+                },
+                {
+                  "component_id": "npm://browser-sync:2.27.7"
+                },
+                {
+                  "component_id": "npm://socket.io:2.4.0"
+                },
+                {
+                  "component_id": "npm://debug:4.1.1"
+                }
+              ]
+            ]
+          }
+        },
+        "issue_id": "XRAY-72687",
+        "references": [
+          "https://github.com/visionmedia/debug/issues/501",
+          "https://github.com/visionmedia/debug/pull/504",
+          "https://nodesecurity.io/advisories/534"
+        ]
+      },
+      {
+        "cves": [
+          {
+            "cvss_v2_score": "4.3",
+            "cvss_v2_vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:N/I:N/A:P",
+            "cvss_v3_score": "7.5",
+            "cvss_v3_vector": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          }
+        ],
+        "summary": "minimatch minimatch.js braceExpand() Function Improper Regular Expression DoS",
+        "severity": "High",
+        "components": {
+          "npm://minimatch:3.0.4": {
+            "fixed_versions": [
+              "[3.0.5]"
+            ],
+            "impact_paths": [
+              [
+                {
+                  "component_id": "npm://zen-website:1.0.0"
+                },
+                {
+                  "component_id": "npm://browser-sync:2.27.7"
+                },
+                {
+                  "component_id": "npm://resp-modifier:6.0.2"
+                },
+                {
+                  "component_id": "npm://minimatch:3.0.4"
+                }
+              ]
+            ]
+          }
+        },
+        "issue_id": "XRAY-198521",
+        "references": [
+          "https://github.com/isaacs/minimatch/commit/707e1b231d5ddf5b00040bd04968a1a092992d1a",
+          "https://huntr.dev/bounties/e4e1393c-d590-4492-9f43-8be3f3321629/",
+          "https://github.com/isaacs/minimatch/commit/a8763f4388e51956be62dc6025cec1126beeb5e6"
+        ]
+      },
+      {
+        "cves": [
+          {
+            "cve": "CVE-2021-44907",
+            "cvss_v2_score": "5.0",
+            "cvss_v2_vector": "CVSS:2.0/AV:N/AC:L/Au:N/C:N/I:N/A:P",
+            "cvss_v3_score": "7.5",
+            "cvss_v3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          }
+        ],
+        "summary": "A Denial of Service vulnerability exists in qs up to 6.8.0 due to insufficient sanitization of property in the gs.parse function. The merge() function allows the assignment of properties on an array in the query. For any property being assigned, a value in the array is converted to an object containing these properties. Essentially, this means that the property whose expected type is Array always has to be checked with Array.isArray() by the user. This may not be obvious to the user and can cause unexpected behavior.",
+        "severity": "High",
+        "components": {
+          "npm://qs:6.2.3": {
+            "impact_paths": [
+              [
+                {
+                  "component_id": "npm://zen-website:1.0.0"
+                },
+                {
+                  "component_id": "npm://browser-sync:2.27.7"
+                },
+                {
+                  "component_id": "npm://qs:6.2.3"
+                }
+              ]
+            ]
+          },
+          "npm://qs:6.7.0": {
+            "impact_paths": [
+              [
+                {
+                  "component_id": "npm://zen-website:1.0.0"
+                },
+                {
+                  "component_id": "npm://express:4.17.1"
+                },
+                {
+                  "component_id": "npm://body-parser:1.19.0"
+                },
+                {
+                  "component_id": "npm://qs:6.7.0"
+                }
+              ]
+            ]
+          }
+        },
+        "issue_id": "XRAY-200822",
+        "references": [
+          "https://github.com/ljharb/qs/blob/master/dist/qs.js#L670",
+          "https://github.com/ljharb/qs/issues/436",
+          "https://jsfiddle.net/65jxksay/",
+          "https://jsfiddle.net/pb6an1dy/"
+        ]
+      },
+      {
+        "cves": [
+          {
+            "cve": "CVE-2020-36048",
+            "cvss_v2_score": "5.0",
+            "cvss_v2_vector": "CVSS:2.0/AV:N/AC:L/Au:N/C:N/I:N/A:P",
+            "cvss_v3_score": "7.5",
+            "cvss_v3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          }
+        ],
+        "summary": "Engine.IO before 4.0.0 allows attackers to cause a denial of service (resource consumption) via a POST request to the long polling transport.",
+        "severity": "High",
+        "components": {
+          "npm://engine.io:3.5.0": {
+            "fixed_versions": [
+              "[4.0.0]"
+            ],
+            "impact_paths": [
+              [
+                {
+                  "component_id": "npm://zen-website:1.0.0"
+                },
+                {
+                  "component_id": "npm://browser-sync:2.27.7"
+                },
+                {
+                  "component_id": "npm://socket.io:2.4.0"
+                },
+                {
+                  "component_id": "npm://engine.io:3.5.0"
+                }
+              ]
+            ]
+          }
+        },
+        "issue_id": "XRAY-138417",
+        "references": [
+          "https://blog.caller.xyz/socketio-engineio-dos/",
+          "https://github.com/bcaller/kill-engine-io",
+          "https://github.com/socketio/engine.io/commit/734f9d1268840722c41219e69eb58318e0b2ac6b"
+        ]
+      },
+      {
+        "cves": [
+          {
+            "cve": "CVE-2022-0536",
+            "cvss_v2_score": "4.3",
+            "cvss_v2_vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:P/I:N/A:N",
+            "cvss_v3_score": "5.9",
+            "cvss_v3_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N"
+          }
+        ],
+        "summary": "Exposure of Sensitive Information to an Unauthorized Actor in NPM follow-redirects prior to 1.14.8.",
+        "severity": "Medium",
+        "components": {
+          "npm://follow-redirects:1.14.5": {
+            "fixed_versions": [
+              "[1.14.8]"
+            ],
+            "impact_paths": [
+              [
+                {
+                  "component_id": "npm://zen-website:1.0.0"
+                },
+                {
+                  "component_id": "npm://browser-sync:2.27.7"
+                },
+                {
+                  "component_id": "npm://http-proxy:1.18.1"
+                },
+                {
+                  "component_id": "npm://follow-redirects:1.14.5"
+                }
+              ]
+            ]
+          }
+        },
+        "issue_id": "XRAY-197972",
+        "references": [
+          "https://huntr.dev/bounties/7cf2bf90-52da-4d59-8028-a73b132de0db",
+          "https://github.com/follow-redirects/follow-redirects/commit/62e546a99c07c3ee5e4e0718c84a6ca127c5c445"
+        ]
+      },
+      {
+        "cves": [
+          {
+            "cve": "CVE-2022-0155",
+            "cvss_v2_score": "4.3",
+            "cvss_v2_vector": "CVSS:2.0/AV:N/AC:M/Au:N/C:P/I:N/A:N",
+            "cvss_v3_score": "6.5",
+            "cvss_v3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:N"
+          }
+        ],
+        "summary": "follow-redirects is vulnerable to Exposure of Private Personal Information to an Unauthorized Actor",
+        "severity": "Medium",
+        "components": {
+          "npm://follow-redirects:1.14.5": {
+            "fixed_versions": [
+              "[1.14.7]"
+            ],
+            "impact_paths": [
+              [
+                {
+                  "component_id": "npm://zen-website:1.0.0"
+                },
+                {
+                  "component_id": "npm://browser-sync:2.27.7"
+                },
+                {
+                  "component_id": "npm://http-proxy:1.18.1"
+                },
+                {
+                  "component_id": "npm://follow-redirects:1.14.5"
+                }
+              ]
+            ]
+          }
+        },
+        "issue_id": "XRAY-194125",
+        "references": [
+          "https://huntr.dev/bounties/fc524e4b-ebb6-427d-ab67-a64181020406",
+          "https://github.com/follow-redirects/follow-redirects/commit/8b347cbcef7c7b72a6e9be20f5710c17d6163c22"
+        ]
+      },
+      {
+        "cves": [
+          {
+            "cve": "CVE-2021-44906",
+            "cvss_v2_score": "7.5",
+            "cvss_v2_vector": "CVSS:2.0/AV:N/AC:L/Au:N/C:P/I:P/A:P",
+            "cvss_v3_score": "9.8",
+            "cvss_v3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+          }
+        ],
+        "summary": "Minimist \u003c=1.2.5 is vulnerable to Prototype Pollution via file index.js, function setKey() (lines 69-95).",
+        "severity": "Critical",
+        "components": {
+          "npm://minimist:1.2.5": {
+            "fixed_versions": [
+              "[1.2.6]"
+            ],
+            "impact_paths": [
+              [
+                {
+                  "component_id": "npm://zen-website:1.0.0"
+                },
+                {
+                  "component_id": "npm://nodemon:2.0.15"
+                },
+                {
+                  "component_id": "npm://update-notifier:5.1.0"
+                },
+                {
+                  "component_id": "npm://latest-version:5.1.0"
+                },
+                {
+                  "component_id": "npm://package-json:6.5.0"
+                },
+                {
+                  "component_id": "npm://registry-auth-token:4.2.1"
+                },
+                {
+                  "component_id": "npm://rc:1.2.8"
+                },
+                {
+                  "component_id": "npm://minimist:1.2.5"
+                }
+              ]
+            ]
+          }
+        },
+        "issue_id": "XRAY-200203",
+        "references": [
+          "https://github.com/Marynk/JavaScript-vulnerability-detection/blob/main/minimist%20PoC.zip",
+          "https://github.com/substack/minimist/blob/master/index.js#L69",
+          "https://github.com/substack/minimist/issues/164",
+          "https://snyk.io/vuln/SNYK-JS-MINIMIST-559764",
+          "https://stackoverflow.com/questions/8588563/adding-custom-properties-to-a-function/20278068#20278068"
+        ]
+      }
+    ],
+    "component_id": "npm://zen-website:1.0.0",
+    "package_type": "Npm",
+    "status": "completed"
+  }
+]

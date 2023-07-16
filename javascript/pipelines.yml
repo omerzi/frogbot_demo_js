@@ -1,0 +1,75 @@
+pipelines:
+  - name: zen_npm_demo_pipelines
+    steps:
+      - name: NpmZenBuild
+        type: NpmBuild
+        configuration:
+          npmArgs: --no-progress --no-audit
+          sourceLocation: /
+          repositoryName: npm
+          inputResources:
+            - name: wmanning_gitRepo
+          integrations:
+            - name: ArtifactoryUnified
+        execution:
+          onStart:
+            - sed -ie "s/1.0.0/1.0.$run_number/g" $res_wmanning_gitRepo_resourcePath/package.json
+            - save_tests $res_wmanning_gitRepo_resourcePath/sample_test.xml
+      - name: NpmBuildPublish
+        type: NpmPublish
+        configuration:
+          deployerRepo: npm
+          autoPublishBuildInfo: true
+          forceXrayScan: false 
+          inputSteps:
+            - name: NpmZenBuild
+          integrations:
+            - name: ArtifactoryUnified
+          outputResources:
+            - name: NpmBuildInfo
+      - name: NpmBuildInfoPromotedQA
+        type: PromoteBuild
+        configuration:
+          targetRepository: npm-qa-local
+          includeDependencies: true    
+          status: "QA-Tested" 
+          comment: "This build has passed all QA testing > $run_number"
+          copy: true
+          integrations:
+            - name: ArtifactoryUnified
+          inputResources:
+            - name: NpmBuildInfo
+          outputResources:
+            - name: NpmBuildInfoPromotedQA
+      - name: NpmBuildInfoPromotedProd
+        type: PromoteBuild
+        configuration:
+          targetRepository: npm-release-local
+          includeDependencies: true    
+          status: "Released" 
+          comment: "This is Zen Front End is ready for release > $run_number"
+          copy: true
+          integrations:
+            - name: ArtifactoryUnified
+          inputResources:
+            - name: NpmBuildInfoPromotedQA
+          outputResources:
+            - name: NpmBuildInfoPromotedProd
+      - name: NPMZenBundle
+        type: CreateReleaseBundle
+        configuration:
+          releaseBundleName: ZenReleaseBundle
+          releaseBundleVersion: v1.0.$run_number
+          failOnValidate: false   
+          dryRun: false
+          sign: true
+          description: "Zen NPM Release Bundle"
+          releaseNotes:                        
+            syntax: "markdown"
+            content: "This is the latest Zen Website release. Light it up!"
+          inputResources:
+            - name: NpmBuildInfoPromotedProd
+          outputResources:
+            - name: NpmBuildReleaseBundleSigned
+
+      

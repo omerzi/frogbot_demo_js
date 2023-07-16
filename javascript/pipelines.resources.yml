@@ -1,0 +1,38 @@
+resources:
+  - name: wmanning_gitRepo
+    type: GitRepo
+    configuration:
+      path: williammanning/zen-website
+      gitProvider: wmanning_gitRepo
+  - name: NpmBuildInfo
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: ArtifactoryUnified
+      buildName: zen-npm-build
+      buildNumber: 1
+  - name: NpmBuildInfoPromotedQA
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: ArtifactoryUnified
+      buildName: zen-npm-build
+      buildNumber: 1
+  - name: NpmBuildInfoPromotedProd
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: ArtifactoryUnified
+      buildName: zen-npm-build
+      buildNumber: 1
+  - name: NpmBuildReleaseBundle
+    type: ReleaseBundle
+    configuration:
+      sourceDistribution: Distribution
+      name: ZenReleaseBundle
+      version: v1.0.0
+      isSigned: false
+  - name: NpmBuildReleaseBundleSigned
+    type: ReleaseBundle
+    configuration:
+      sourceDistribution: Distribution
+      name: ZenReleaseBundle
+      version: v1.0.0
+      isSigned: true    
